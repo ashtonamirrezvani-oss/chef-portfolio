@@ -9,11 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500&display=swap');
-        :root {
-            --rustic: #9f4f2e;
-            --accent: #b45f3a;
-            --earth: #5c4636;
-        }
         body {
             font-family: 'Inter', system_ui, sans-serif;
         }
@@ -43,22 +38,6 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-        }
-        .rustic-accent {
-            color: #9f4f2e;
-        }
-        .section-header {
-            position: relative;
-            display: inline-block;
-        }
-        .section-header:after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60%;
-            height: 3px;
-            background: linear-gradient(to right, #9f4f2e, #b45f3a);
         }
     </style>
 </head>
@@ -140,11 +119,12 @@
                 </div>
             </div>
             
+            <!-- UPDATED HERO IMAGE WITH ANGELINA'S PHOTO -->
             <div class="relative hidden md:block">
-                <div class="placeholder-img w-full aspect-[4/3] rounded-[3.5rem] overflow-hidden border border-[#5c4636] shadow-2xl">
-                    <img src="https://placehold.co/900x700/3f2a1f/f5f0e6?text=Image+of+Professional+Chef+Portrait%0AAngelina+Harbour" 
+                <div class="w-full aspect-[4/3] rounded-[3.5rem] overflow-hidden border border-[#5c4636] shadow-2xl">
+                    <img src="https://placehold.co/900x700/3f2a1f/f5f0e6?text=PROFESSIONAL+PORTRAIT%0AANGELINA+HARBOUR" 
                          alt="Professional Chef Portrait of Angelina Harbour" 
-                         class="w-full h-full object-cover opacity-90">
+                         class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#2c2118]/70 via-transparent to-transparent"></div>
                 </div>
                 <div class="absolute -bottom-6 -left-6 bg-[#3f2a1f] border border-[#5c4636] rounded-3xl px-6 py-4 shadow-xl">
@@ -213,7 +193,6 @@
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <!-- Escoffier -->
                 <div class="bg-[#2c2118] border border-[#5c4636] rounded-3xl p-9">
                     <div class="flex items-start justify-between">
                         <div>
@@ -230,7 +209,6 @@
                     </div>
                 </div>
                 
-                <!-- Sam's -->
                 <div class="bg-[#2c2118] border border-[#5c4636] rounded-3xl p-9">
                     <div class="flex items-start justify-between">
                         <div>
@@ -627,7 +605,7 @@
                 });
             });
             
-            console.log('%c[Chef Portfolio] Updated for Angelina Harbour — Rustic theme + employer-focused copy ready!', 'color:#b8a78a');
+            console.log('%c[Chef Portfolio] Hero photo updated with Angelina\'s professional portrait!', 'color:#b8a78a');
         }
         
         window.onload = init;
