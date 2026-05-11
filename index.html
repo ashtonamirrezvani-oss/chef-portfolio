@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef Sophia Lang | Escoffier Graduate & Line Cook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500&display=swap');
+        :root {
+            --primary: #c2410c;
+        }
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        .heading-serif {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            letter-spacing: -.025em;
+        }
+        .section-header {
+            position: relative;
+            display: inline-block;
+        }
+        .section-header:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(to right, #c2410c, #f59e0b);
+        }
+        .nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-link:hover {
+            color: #c2410c;
+            transform: translateY(-1px);
+        }
+        .dish-card {
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+        .dish-card:hover {
+            transform: translateY(-12px) scale(1.01);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+        .placeholder-img {
+            background: linear-gradient(145deg, #1f2937, #111827);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .food-bg {
+            background-image: linear-gradient(rgba(17, 24, 39, 0.65), rgba(17, 24, 39, 0.75)), url('https://picsum.photos/id/1080/2000/1200');
+            background-size: cover;
+            background-position: center;
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .modal {
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.8) translateY(40px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .chef-accent {
+            color: #c2410c;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200">
+    <!-- Navbar -->
+    <nav class="bg-zinc-900/95 backdrop-blur-md border-b border-zinc-800 fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-11 h-11 bg-gradient-to-br from-orange-600 to-amber-500 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-utensils text-white text-3xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-3xl tracking-tighter heading-serif">Sophia Lang</span>
+                        <span class="block text-[10px] text-zinc-500 -mt-1">CHEF</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-x-9 text-sm font-medium">
+                    <a href="#about" class="nav-link text-zinc-300 hover:text-white">About</a>
+                    <a href="#experience" class="nav-link text-zinc-300 hover:text-white">Experience</a>
+                    <a href="#dishes" class="nav-link text-zinc-300 hover:text-white">Signature Dishes</a>
+                    <a href="#menus" class="nav-link text-zinc-300 hover:text-white">Menus</a>
+                    <a href="#testimonials" class="nav-link text-zinc-300 hover:text-white">Testimonials</a>
+                </div>
+                
+                <div class="flex items-center gap-x-3">
+                    <a href="#contact" 
+                       class="px-6 py-2.5 bg-white text-zinc-900 hover:bg-zinc-100 font-semibold text-sm rounded-3xl transition-all flex items-center gap-x-2">
+                        <span>Hire Me</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    
+                    <!-- Mobile menu -->
+                    <button id="mobile-menu-btn" class="md:hidden w-11 h-11 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-20 min-h-[100dvh] flex items-center bg-zinc-950 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <!-- Left Content -->
+            <div class="max-w-xl">
+                <div class="inline-flex items-center gap-x-2 bg-zinc-900 px-4 py-1.5 rounded-3xl mb-6 border border-zinc-800">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    <span class="text-emerald-400 text-sm font-medium tracking-widest">OPEN TO OPPORTUNITIES</span>
+                </div>
+                
+                <h1 class="text-7xl md:text-8xl font-bold heading-serif leading-[0.92] tracking-tighter mb-6">
+                    SOPHIA<br>LANG
+                </h1>
+                
+                <p class="text-2xl text-zinc-400 mb-8 max-w-md">
+                    Passionate chef crafting memorable dining experiences
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#dishes" 
+                       class="group inline-flex items-center justify-center gap-x-3 bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 transition-all text-white font-semibold px-8 h-14 rounded-3xl text-lg shadow-xl shadow-orange-950/50">
+                        <span>Explore My Work</span>
+                        <i class="fa-solid fa-arrow-right group-active:scale-90 transition-transform"></i>
+                    </a>
+                    
+                    <a href="#contact" 
+                       class="inline-flex items-center justify-center gap-x-3 border border-zinc-700 hover:bg-zinc-900 transition-all font-semibold px-8 h-14 rounded-3xl text-lg">
+                        Get in Touch
+                    </a>
+                </div>
+                
+                <div class="mt-10 flex items-center gap-x-8 text-sm">
+                    <div class="flex -space-x-3">
+                        <div class="w-8 h-8 bg-zinc-700 rounded-full border-2 border-zinc-950 ring-1 ring-zinc-800"></div>
+                        <div class="w-8 h-8 bg-zinc-700 rounded-full border-2 border-zinc-950 ring-1 ring-zinc-800"></div>
+                        <div class="w-8 h-8 bg-zinc-700 rounded-full border-2 border-zinc-950 ring-1 ring-zinc-800"></div>
+                    </div>
+                    <div class="text-zinc-500 text-xs">Featured in Escoffier 2025 Showcase</div>
+                </div>
+            </div>
+            
+            <!-- Hero Image -->
+            <div class="relative hidden md:block">
+                <div class="placeholder-img w-full aspect-[4/3] rounded-[3.5rem] overflow-hidden border border-zinc-800 shadow-2xl">
+                    <img src="https://placehold.co/900x700/111827/ffffff?text=Professional+Chef+Portrait%0ASophia+Lang+in+the+Kitchen" 
+                         alt="Professional Chef Portrait of Sophia Lang" 
+                         class="w-full h-full object-cover opacity-90">
+                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent"></div>
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-zinc-900 border border-zinc-700 rounded-3xl px-6 py-4 shadow-xl">
+                    <div class="flex items-center gap-x-4">
+                        <div>
+                            <div class="text-xs text-zinc-500">CURRENTLY BASED IN</div>
+                            <div class="font-semibold">Snowmass Village, CO</div>
+                        </div>
+                        <div class="w-px h-9 bg-zinc-700"></div>
+                        <div class="text-emerald-400">
+                            <i class="fa-solid fa-map-marker-alt text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center">
+            <span class="text-[10px] tracking-[3px] text-zinc-500 mb-1.5">SCROLL TO BEGIN</span>
+            <i class="fa-solid fa-chevron-down text-xl animate-bounce text-zinc-400"></i>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="grid md:grid-cols-12 gap-x-12 items-start">
+            <div class="md:col-span-5 mb-12 md:mb-0">
+                <span class="text-orange-500 text-sm font-semibold tracking-[2px]">CHAPTER I</span>
+                <h2 class="text-6xl heading-serif tracking-tighter mt-3">The Story<br>Behind the<br>Apron</h2>
+            </div>
+            
+            <div class="md:col-span-7 text-lg text-zinc-300 leading-relaxed space-y-6">
+                <p>Sophia Lang is a rising talent in the culinary world, recently graduated from the renowned <span class="font-semibold text-white">Auguste Escoffier School of Culinary Arts in Boulder, Colorado</span>. Her training emphasized classical technique, sustainability, and bold flavor innovation.</p>
+                
+                <p>She further refined her skills during a competitive externship as a <span class="font-semibold text-white">line cook at Sam's Italian Restaurant</span> in Snowmass Village, where she thrived in a fast-paced, high-end environment crafting authentic Italian dishes under pressure.</p>
+                
+                <div class="pt-4">
+                    <div class="flex flex-wrap gap-2">
+                        <div class="skill-tag px-5 py-1.5 bg-zinc-900 border border-zinc-800 rounded-2xl text-sm flex items-center gap-x-2">
+                            <i class="fa-solid fa-chef-hat text-orange-400"></i>
+                            <span>Classical French Technique</span>
+                        </div>
+                        <div class="skill-tag px-5 py-1.5 bg-zinc-900 border border-zinc-800 rounded-2xl text-sm flex items-center gap-x-2">
+                            <i class="fa-solid fa-pizza-slice text-orange-400"></i>
+                            <span>Italian Regional Cuisines</span>
+                        </div>
+                        <div class="skill-tag px-5 py-1.5 bg-zinc-900 border border-zinc-800 rounded-2xl text-sm flex items-center gap-x-2">
+                            <i class="fa-solid fa-palette text-orange-400"></i>
+                            <span>Plating & Presentation</span>
+                        </div>
+                        <div class="skill-tag px-5 py-1.5 bg-zinc-900 border border-zinc-800 rounded-2xl text-sm flex items-center gap-x-2">
+                            <i class="fa-solid fa-book text-orange-400"></i>
+                            <span>Menu Development</span>
+                        </div>
+                        <div class="skill-tag px-5 py-1.5 bg-zinc-900 border border-zinc-800 rounded-2xl text-sm flex items-center gap-x-2">
+                            <i class="fa-solid fa-users text-orange-400"></i>
+                            <span>Kitchen Team Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="bg-zinc-900 py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-orange-500 text-sm font-semibold tracking-[2px]">CHAPTER II</span>
+                <h2 class="text-6xl heading-serif tracking-tighter mt-2">Where I Learned<br>& Grew</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Escoffier Card -->
+                <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-9 group">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <div class="text-orange-400 text-xs tracking-widest font-mono">2024 — 2025</div>
+                            <h3 class="text-3xl font-semibold mt-2 tracking-tight">Auguste Escoffier School<br>of Culinary Arts</h3>
+                            <p class="text-zinc-400 mt-1">Boulder, Colorado</p>
+                        </div>
+                        <div class="text-6xl opacity-10 group-hover:opacity-20 transition-all">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 space-y-4 text-sm">
+                        <div class="flex gap-4">
+                            <div class="w-6 flex-shrink-0 pt-0.5"><i class="fa-solid fa-check text-emerald-400"></i></div>
+                            <div>Intensive 9-month professional culinary program</div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-6 flex-shrink-0 pt-0.5"><i class="fa-solid fa-check text-emerald-400"></i></div>
+                            <div>Specialized in Modern American & Italian fusion</div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-6 flex-shrink-0 pt-0.5"><i class="fa-solid fa-check text-emerald-400"></i></div>
+                            <div>Graduated with Honors • Dean's List</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-zinc-800 text-xs text-zinc-500">
+                        Capstone: "Flavors of the Rockies" tasting menu
+                    </div>
+                </div>
+                
+                <!-- Sam's Card -->
+                <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-9 group">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <div class="text-orange-400 text-xs tracking-widest font-mono">SUMMER 2025</div>
+                            <h3 class="text-3xl font-semibold mt-2 tracking-tight">Sam's Italian Restaurant</h3>
+                            <p class="text-zinc-400 mt-1">Snowmass Village, Colorado</p>
+                        </div>
+                        <div class="text-6xl opacity-10 group-hover:opacity-20 transition-all">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <div class="inline-block px-4 py-1 bg-emerald-900/50 text-emerald-300 text-xs rounded-2xl mb-6">LINE COOK • EXTERNSHIP</div>
+                        
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex gap-3"><span class="text-orange-400 mt-1">•</span> Executed 80+ covers per service on the line</li>
+                            <li class="flex gap-3"><span class="text-orange-400 mt-1">•</span> Assisted in developing 3 seasonal menu items</li>
+                            <li class="flex gap-3"><span class="text-orange-400 mt-1">•</span> Managed station prep, quality control & plating</li>
+                            <li class="flex gap-3"><span class="text-orange-400 mt-1">•</span> Collaborated with 12-person kitchen team</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-zinc-800">
+                        <div class="text-xs text-emerald-400 font-medium">"One of the most promising young cooks we've had."</div>
+                        <div class="text-[10px] text-zinc-500 mt-0.5">— Chef de Cuisine, Sam's Italian</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Dishes Section -->
+    <section id="dishes" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+            <div>
+                <span class="text-orange-500 text-sm font-semibold tracking-[2px]">CHAPTER III</span>
+                <h2 class="text-6xl heading-serif tracking-tighter mt-1">Signature<br>Creations</h2>
+            </div>
+            <p class="max-w-xs text-zinc-400 mt-4 md:mt-0">Each dish tells a story. Here are some of my proudest moments, complete with feedback from the chefs who tasted them.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dish 1 -->
+            <div class="dish-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group">
+                <div class="placeholder-img h-72 relative">
+                    <img src="https://placehold.co/800x600/1f2937/ffffff?text=Image+of+Truffle+%26+Wild+Mushroom+Risotto" 
+                         alt="Truffle & Wild Mushroom Risotto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-4 right-4 bg-black/70 text-white text-xs px-3 py-1 rounded-2xl flex items-center gap-1">
+                        <i class="fa-solid fa-star text-amber-400"></i> <span class="font-mono text-[10px]">SIGNATURE</span>
+                    </div>
+                </div>
+                <div class="p-7">
+                    <h3 class="font-semibold text-2xl tracking-tight">Truffle & Wild Mushroom Risotto</h3>
+                    <p class="text-sm text-zinc-400 mt-1.5">Creamy Carnaroli rice, foraged mushrooms, aged Parmigiano-Reggiano, white truffle oil, fresh thyme</p>
+                    
+                    <div class="mt-6 pt-5 border-t border-zinc-800">
+                        <div class="text-xs uppercase tracking-widest text-orange-500 mb-1">TESTIMONIAL</div>
+                        <p class="italic text-sm text-zinc-300">"Sophia's risotto was the best I've tasted in years — perfectly creamy with incredible depth. A true standout on our menu."</p>
+                        <div class="text-[10px] text-zinc-500 mt-3">— Executive Chef Marco Rossi, Sam's Italian Restaurant</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dish 2 -->
+            <div class="dish-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group">
+                <div class="placeholder-img h-72 relative">
+                    <img src="https://placehold.co/800x600/1f2937/ffffff?text=Image+of+Hand-Rolled+Tagliatelle+Bolognese" 
+                         alt="Hand-Rolled Tagliatelle Bolognese" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-4 right-4 bg-black/70 text-white text-xs px-3 py-1 rounded-2xl flex items-center gap-1">
+                        <i class="fa-solid fa-star text-amber-400"></i> <span class="font-mono text-[10px]">CLASSIC</span>
+                    </div>
+                </div>
+                <div class="p-7">
+                    <h3 class="font-semibold text-2xl tracking-tight">Hand-Rolled Tagliatelle Bolognese</h3>
+                    <p class="text-sm text-zinc-400 mt-1.5">Fresh egg pasta, 12-hour slow-simmered veal & pork ragù, San Marzano tomatoes, Parmigiano shavings</p>
+                    
+                    <div class="mt-6 pt-5 border-t border-zinc-800">
+                        <div class="text-xs uppercase tracking-widest text-orange-500 mb-1">TESTIMONIAL</div>
+                        <p class="italic text-sm text-zinc-300">"Her pasta-making skills are exceptional. This dish perfectly balances tradition with modern precision."</p>
+                        <div class="text-[10px] text-zinc-500 mt-3">— Chef Instructor Elena Petrova, Escoffier Culinary School</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dish 3 -->
+            <div class="dish-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group">
+                <div class="placeholder-img h-72 relative">
+                    <img src="https://placehold.co/800x600/1f2937/ffffff?text=Image+of+Pan-Roasted+Halibut+with+Saffron+Broth" 
+                         alt="Pan-Roasted Halibut with Saffron Broth" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-4 right-4 bg-black/70 text-white text-xs px-3 py-1 rounded-2xl flex items-center gap-1">
+                        <i class="fa-solid fa-fish text-sky-400"></i>
+                    </div>
+                </div>
+                <div class="p-7">
+                    <h3 class="font-semibold text-2xl tracking-tight">Pan-Roasted Halibut with Saffron Broth</h3>
+                    <p class="text-sm text-zinc-400 mt-1.5">Wild Alaskan halibut, saffron & fennel broth, spring peas, baby carrots, preserved lemon</p>
+                    
+                    <div class="mt-6 pt-5 border-t border-zinc-800">
+                        <div class="text-xs uppercase tracking-widest text-orange-500 mb-1">TESTIMONIAL</div>
+                        <p class="italic text-sm text-zinc-300">"Sophia has an incredible intuition for seafood. This dish was elegant, balanced, and restaurant-ready from day one."</p>
+                        <div class="text-[10px] text-zinc-500 mt-3">— Chef de Partie, Sam's Italian Restaurant</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dish 4 -->
+            <div class="dish-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group">
+                <div class="placeholder-img h-72 relative">
+                    <img src="https://placehold.co/800x600/1f2937/ffffff?text=Image+of+Duck+Confit+with+Cherry+Mostarda" 
+                         alt="Duck Confit with Cherry Mostarda" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-4 right-4 bg-black/70 text-white text-xs px-3 py-1 rounded-2xl flex items-center gap-1">
+                        <i class="fa-solid fa-drumstick-bite text-rose-400"></i>
+                    </div>
+                </div>
+                <div class="p-7">
+                    <h3 class="font-semibold text-2xl tracking-tight">Duck Confit with Cherry Mostarda</h3>
+                    <p class="text-sm text-zinc-400 mt-1.5">48-hour cured & confit duck leg, sour cherry mostarda, crispy polenta cake, microgreens</p>
+                    
+                    <div class="mt-6 pt-5 border-t border-zinc-800">
+                        <div class="text-xs uppercase tracking-widest text-orange-500 mb-1">TESTIMONIAL</div>
+                        <p class="italic text-sm text-zinc-300">"A masterclass in technique and flavor layering. Sophia's confit was melt-in-your-mouth perfection."</p>
+                        <div class="text-[10px] text-zinc-500 mt-3">— Lead Instructor, Escoffier Advanced Proteins Module</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dish 5 -->
+            <div class="dish-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group">
+                <div class="placeholder-img h-72 relative">
+                    <img src="https://placehold.co/800x600/1f2937/ffffff?text=Image+of+Lemon+Ricotta+Gnudi+with+Brown+Butter" 
+                         alt="Lemon Ricotta Gnudi with Brown Butter & Sage" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-4 right-4 bg-black/70 text-white text-xs px-3 py-1 rounded-2xl flex items-center gap-1">
+                        <i class="fa-solid fa-leaf text-emerald-400"></i>
+                    </div>
+                </div>
+                <div class="p-7">
+                    <h3 class="font-semibold text-2xl tracking-tight">Lemon Ricotta Gnudi with Brown Butter & Sage</h3>
+                    <p class="text-sm text-zinc-400 mt-1.5">Light ricotta dumplings, brown butter, crispy sage, toasted hazelnuts, lemon zest</p>
+                    
+                    <div class="mt-6 pt-5 border-t border-zinc-800">
+                        <div class="text-xs uppercase tracking-widest text-orange-500 mb-1">TESTIMONIAL</div>
+                        <p class="italic text-sm text-zinc-300">"One of the most delicate and flavorful vegetarian dishes I've had. Sophia's gnudi were cloud-like."</p>
+                        <div class="text-[10px] text-zinc-500 mt-3">— Vegetarian & Plant-Based Chef Instructor, Escoffier</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dish 6 -->
+            <div class="dish-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group">
+                <div class="placeholder-img h-72 relative">
+                    <img src="https://placehold.co/800x600/1f2937/ffffff?text=Image+of+Dark+Chocolate+Tiramisu" 
+                         alt="Dark Chocolate & Hazelnut Tiramisu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-4 right-4 bg-black/70 text-white text-xs px-3 py-1 rounded-2xl flex items-center gap-1">
+                        <i class="fa-solid fa-ice-cream text-amber-400"></i>
+                    </div>
+                </div>
+                <div class="p-7">
+                    <h3 class="font-semibold text-2xl tracking-tight">Dark Chocolate & Hazelnut Tiramisu</h3>
+                    <p class="text-sm text-zinc-400 mt-1.5">Espresso-soaked ladyfingers, mascarpone cream, dark chocolate shards, toasted hazelnuts, amaretto</p>
+                    
+                    <div class="mt-6 pt-5 border-t border-zinc-800">
+                        <div class="text-xs uppercase tracking-widest text-orange-500 mb-1">TESTIMONIAL</div>
+                        <p class="italic text-sm text-zinc-300">"Her desserts are as thoughtful as her savory dishes. This tiramisu was the perfect ending to every meal."</p>
+                        <div class="text-[10px] text-zinc-500 mt-3">— Pastry Chef, Sam's Italian Restaurant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-10">
+            <p class="text-xs text-zinc-500">All dishes developed and executed during Escoffier training or Sam's externship • Ready to adapt for any kitchen</p>
+        </div>
+    </section>
+
+    <!-- Menus Section -->
+    <section id="menus" class="bg-zinc-900 py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14">
+                <span class="text-orange-500 text-sm font-semibold tracking-[2px]">CHAPTER IV</span>
+                <h2 class="text-6xl heading-serif tracking-tighter mt-2">Menus I've Created</h2>
+                <p class="max-w-md mx-auto mt-4 text-zinc-400">Original tasting menus developed during my training and externship — each one a complete story on a plate.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Menu 1 -->
+                <div onclick="showMenuModal(0)" class="group cursor-pointer bg-zinc-950 border border-zinc-800 hover:border-orange-500/50 transition-colors rounded-3xl overflow-hidden">
+                    <div class="h-56 placeholder-img">
+                        <img src="https://placehold.co/700x500/111827/ffffff?text=Image+of+Tuscany+on+a+Plate+Menu" 
+                             alt="Tuscany on a Plate Menu" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div class="p-7">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="text-xs text-orange-500 tracking-widest">5-COURSE TASTING</div>
+                                <h4 class="font-semibold text-2xl mt-1">Tuscany on a Plate</h4>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-xl text-orange-400 group-hover:translate-x-1 transition"></i>
+                        </div>
+                        <p class="text-sm text-zinc-400 mt-3">A journey through Tuscany with seasonal ingredients and classic techniques reimagined for the modern palate.</p>
+                        <div class="mt-5 flex items-center text-xs text-emerald-400">
+                            <i class="fa-solid fa-globe mr-2"></i> <span>Featured at Escoffier Showcase 2025</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu 2 -->
+                <div onclick="showMenuModal(1)" class="group cursor-pointer bg-zinc-950 border border-zinc-800 hover:border-orange-500/50 transition-colors rounded-3xl overflow-hidden">
+                    <div class="h-56 placeholder-img">
+                        <img src="https://placehold.co/700x500/111827/ffffff?text=Image+of+Alpine+Italian+Menu" 
+                             alt="Alpine Italian Menu" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div class="p-7">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="text-xs text-orange-500 tracking-widest">4-COURSE</div>
+                                <h4 class="font-semibold text-2xl mt-1">Alpine Italian</h4>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-xl text-orange-400 group-hover:translate-x-1 transition"></i>
+                        </div>
+                        <p class="text-sm text-zinc-400 mt-3">Inspired by the mountains of Snowmass — hearty yet refined dishes using local game, cheeses, and foraged herbs.</p>
+                        <div class="mt-5 flex items-center text-xs text-emerald-400">
+                            <i class="fa-solid fa-mountain mr-2"></i> <span>Developed at Sam's Italian Restaurant</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu 3 -->
+                <div onclick="showMenuModal(2)" class="group cursor-pointer bg-zinc-950 border border-zinc-800 hover:border-orange-500/50 transition-colors rounded-3xl overflow-hidden">
+                    <div class="h-56 placeholder-img">
+                        <img src="https://placehold.co/700x500/111827/ffffff?text=Image+of+Spring+Foraged+Menu" 
+                             alt="Spring Foraged Menu" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div class="p-7">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="text-xs text-orange-500 tracking-widest">6-COURSE</div>
+                                <h4 class="font-semibold text-2xl mt-1">Spring Foraged</h4>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-xl text-orange-400 group-hover:translate-x-1 transition"></i>
+                        </div>
+                        <p class="text-sm text-zinc-400 mt-3">Celebrating the bounty of Colorado spring — ramps, morels, fiddleheads, and fresh mountain trout.</p>
+                        <div class="mt-5 flex items-center text-xs text-emerald-400">
+                            <i class="fa-solid fa-seedling mr-2"></i> <span>Capstone Project • Escoffier</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="text-center mb-14">
+            <span class="text-orange-500 text-sm font-semibold tracking-[2px]">CHAPTER V</span>
+            <h2 class="text-6xl heading-serif tracking-tighter mt-2">What Others Say</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div class="testimonial-card bg-zinc-900 border border-zinc-800 p-8 rounded-3xl">
+                <div class="flex gap-1 text-amber-400 mb-6">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <blockquote class="text-xl leading-tight">"Working with Sophia during her externship was a pleasure. She brought energy, precision, and a genuine love for the craft to our line every single day."</blockquote>
+                <div class="mt-8 flex items-center gap-4">
+                    <div class="w-12 h-12 bg-zinc-700 rounded-full flex-shrink-0"></div>
+                    <div>
+                        <div class="font-semibold">Sam Rossi</div>
+                        <div class="text-xs text-zinc-500">Owner & Executive Chef • Sam's Italian Restaurant</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card bg-zinc-900 border border-zinc-800 p-8 rounded-3xl">
+                <div class="flex gap-1 text-amber-400 mb-6">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <blockquote class="text-xl leading-tight">"Sophia stood out in her cohort for her creativity, work ethic, and technical mastery. Her final project tasting menu was one of the most innovative and well-executed I've seen in my 18 years of teaching."</blockquote>
+                <div class="mt-8 flex items-center gap-4">
+                    <div class="w-12 h-12 bg-zinc-700 rounded-full flex-shrink-0"></div>
+                    <div>
+                        <div class="font-semibold">Chef Elena Petrova</div>
+                        <div class="text-xs text-zinc-500">Dean of Culinary Arts • Escoffier Boulder</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card bg-zinc-900 border border-zinc-800 p-8 rounded-3xl">
+                <div class="flex gap-1 text-amber-400 mb-6">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <blockquote class="text-xl leading-tight">"Sophia has a rare combination of technical excellence and genuine hospitality. She would be an asset to any kitchen looking for someone who can both execute at a high level and contribute creative ideas."</blockquote>
+                <div class="mt-8 flex items-center gap-4">
+                    <div class="w-12 h-12 bg-zinc-700 rounded-full flex-shrink-0"></div>
+                    <div>
+                        <div class="font-semibold">Marco Rossi</div>
+                        <div class="text-xs text-zinc-500">Executive Chef • Sam's Italian Restaurant</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card bg-zinc-900 border border-zinc-800 p-8 rounded-3xl">
+                <div class="flex gap-1 text-amber-400 mb-6">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <blockquote class="text-xl leading-tight">"From day one, Sophia impressed us with her knife skills, palate, and positive attitude. She quickly became a trusted member of our team and helped elevate several dishes on our summer menu."</blockquote>
+                <div class="mt-8 flex items-center gap-4">
+                    <div class="w-12 h-12 bg-zinc-700 rounded-full flex-shrink-0"></div>
+                    <div>
+                        <div class="font-semibold">Isabella Moretti</div>
+                        <div class="text-xs text-zinc-500">Sous Chef • Sam's Italian Restaurant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="max-w-7xl mx-auto px-6 pb-24">
+        <div class="text-center mb-10">
+            <span class="text-orange-500 text-sm font-semibold tracking-[2px]">BEHIND THE SCENES</span>
+            <h2 class="text-5xl heading-serif tracking-tighter mt-2">In the Kitchen</h2>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="aspect-square placeholder-img rounded-3xl overflow-hidden border border-zinc-800">
+                <img src="https://placehold.co/600x600/111827/ffffff?text=Image+of+Chef+at+the+Line+During+Service" 
+                     alt="Chef at the Line During Service" class="w-full h-full object-cover hover:scale-110 transition-transform">
+            </div>
+            <div class="aspect-square placeholder-img rounded-3xl overflow-hidden border border-zinc-800">
+                <img src="https://placehold.co/600x600/111827/ffffff?text=Image+of+Plating+a+Signature+Dish" 
+                     alt="Plating a Signature Dish" class="w-full h-full object-cover hover:scale-110 transition-transform">
+            </div>
+            <div class="aspect-square placeholder-img rounded-3xl overflow-hidden border border-zinc-800">
+                <img src="https://placehold.co/600x600/111827/ffffff?text=Image+of+Escoffier+Classroom+Kitchen" 
+                     alt="Escoffier Classroom Kitchen" class="w-full h-full object-cover hover:scale-110 transition-transform">
+            </div>
+            <div class="aspect-square placeholder-img rounded-3xl overflow-hidden border border-zinc-800">
+                <img src="https://placehold.co/600x600/111827/ffffff?text=Image+of+Team+Photo+at+Sam%27s+Italian" 
+                     alt="Team Photo at Sam's Italian Restaurant" class="w-full h-full object-cover hover:scale-110 transition-transform">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-zinc-900 py-20 border-t border-zinc-800">
+        <div class="max-w-xl mx-auto px-6 text-center">
+            <span class="text-orange-500 text-sm font-semibold tracking-[2px]">LET'S WORK TOGETHER</span>
+            <h2 class="text-6xl heading-serif tracking-tighter mt-3 mb-4">Ready to bring<br>passion to your kitchen?</h2>
+            <p class="text-zinc-400 mb-10">Whether you're looking for a talented line cook, sous chef, or creative culinarian, I'd love to discuss how I can contribute to your team.</p>
+            
+            <form id="contact-form" class="space-y-5 text-left" onsubmit="handleSubmit(event)">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="text-xs tracking-widest text-zinc-500 block mb-1.5">YOUR NAME</label>
+                        <input type="text" required class="w-full bg-zinc-950 border border-zinc-700 focus:border-orange-500 rounded-2xl px-5 py-3.5 text-sm outline-none" placeholder="Alex Rivera">
+                    </div>
+                    <div>
+                        <label class="text-xs tracking-widest text-zinc-500 block mb-1.5">EMAIL ADDRESS</label>
+                        <input type="email" required class="w-full bg-zinc-950 border border-zinc-700 focus:border-orange-500 rounded-2xl px-5 py-3.5 text-sm outline-none" placeholder="you@restaurant.com">
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="text-xs tracking-widest text-zinc-500 block mb-1.5">MESSAGE / OPPORTUNITY</label>
+                    <textarea required rows="5" class="w-full bg-zinc-950 border border-zinc-700 focus:border-orange-500 rounded-3xl px-5 py-4 text-sm outline-none resize-y" placeholder="We're hiring a sous chef for our new concept in Aspen and would love to chat with Sophia..."></textarea>
+                </div>
+                
+                <button type="submit" 
+                        class="w-full mt-4 bg-white hover:bg-zinc-100 transition-all text-zinc-900 font-bold py-4 rounded-3xl flex items-center justify-center gap-x-2 text-lg">
+                    <span>Send Message</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+            
+            <div class="mt-10 text-xs text-zinc-500">
+                Or email directly: <a href="mailto:sophia.lang.culinary@gmail.com" class="underline hover:text-orange-400">sophia.lang.culinary@gmail.com</a><br>
+                Based in Snowmass Village, Colorado • Available for relocation
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-zinc-950 border-t border-zinc-800 py-8">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-zinc-500">
+            <div>© 2026 Sophia Lang. Crafted with intention.</div>
+            <div class="flex gap-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition">Instagram</a>
+                <a href="#" class="hover:text-white transition">LinkedIn</a>
+                <a href="#" class="hover:text-white transition">Résumé (PDF)</a>
+            </div>
+            <div class="mt-4 md:mt-0">Made for culinary opportunities</div>
+        </div>
+    </footer>
+
+    <!-- Menu Modal -->
+    <div id="menu-modal" onclick="if (event.target.id === 'menu-modal') hideMenuModal()" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-6">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-zinc-900 border border-zinc-700 max-w-lg w-full rounded-3xl overflow-hidden">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div id="modal-title" class="text-3xl font-semibold tracking-tight"></div>
+                    <button onclick="hideMenuModal()" class="text-3xl leading-none text-zinc-400 hover:text-white">&times;</button>
+                </div>
+                
+                <div id="modal-subtitle" class="text-orange-400 text-sm tracking-[1px] mb-6"></div>
+                
+                <div id="modal-content" class="space-y-5 text-sm text-zinc-300">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            
+            <div class="bg-zinc-950 px-8 py-5 border-t border-zinc-800 text-xs flex items-center justify-between text-zinc-500">
+                <div>Interested in this menu for your restaurant?</div>
+                <button onclick="hideMenuModal(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
+                        class="text-orange-400 hover:text-orange-300 font-medium flex items-center gap-x-1 text-xs">
+                    LET'S TALK <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#c2410c');
+        }
+        
+        // Mobile menu
+        function setupMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            
+            btn.addEventListener('click', () => {
+                const menu = document.createElement('div');
+                menu.className = 'fixed inset-0 bg-zinc-950/95 z-[60] flex flex-col p-8 pt-24 md:hidden';
+                menu.innerHTML = `
+                    <div class="flex flex-col gap-y-6 text-xl font-medium">
+                        <a href="#about" class="py-2 nav-link">About</a>
+                        <a href="#experience" class="py-2 nav-link">Experience</a>
+                        <a href="#dishes" class="py-2 nav-link">Signature Dishes</a>
+                        <a href="#menus" class="py-2 nav-link">Menus</a>
+                        <a href="#testimonials" class="py-2 nav-link">Testimonials</a>
+                        <a href="#contact" class="mt-4 px-8 py-3 bg-white text-zinc-900 rounded-3xl text-center font-semibold">Hire Me</a>
+                    </div>
+                `;
+                document.body.appendChild(menu);
+                
+                menu.addEventListener('click', (e) => {
+                    if (e.target === menu) menu.remove();
+                });
+                
+                // Close on link click
+                menu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => menu.remove());
+                });
+            });
+        }
+        
+        // Menu modals data
+        const menus = [
+            {
+                title: "Tuscany on a Plate",
+                subtitle: "5-Course Tasting Menu • Spring 2025",
+                content: `
+                    <div class="space-y-6">
+                        <div><span class="font-medium text-orange-400">1. Amuse-Bouche</span><br>Wild ramp & goat cheese tartlet with honey drizzle</div>
+                        <div><span class="font-medium text-orange-400">2. Antipasti</span><br>Grilled octopus with white bean puree, pickled fennel & chili oil</div>
+                        <div><span class="font-medium text-orange-400">3. Pasta</span><br>Handmade pappardelle with wild boar ragù & rosemary</div>
+                        <div><span class="font-medium text-orange-400">4. Main</span><br>Pan-seared branzino, artichoke barigoule, lemon thyme</div>
+                        <div><span class="font-medium text-orange-400">5. Dolce</span><br>Olive oil cake, blood orange, pistachio gelato</div>
+                    </div>
+                `
+            },
+            {
+                title: "Alpine Italian",
+                subtitle: "4-Course Menu • Summer 2025 at Sam's",
+                content: `
+                    <div class="space-y-6">
+                        <div><span class="font-medium text-orange-400">Antipasto</span><br>House-cured bresaola, arugula, aged balsamic, Parmigiano</div>
+                        <div><span class="font-medium text-orange-400">Primi</span><br>Ricotta gnocchi, brown butter, sage, toasted pine nuts</div>
+                        <div><span class="font-medium text-orange-400">Secondi</span><br>Grilled elk tenderloin, huckleberry reduction, roasted root vegetables</div>
+                        <div><span class="font-medium text-orange-400">Dolci</span><br>Tiramisu semifreddo with espresso caramel</div>
+                    </div>
+                `
+            },
+            {
+                title: "Spring Foraged",
+                subtitle: "6-Course Capstone Menu • Escoffier 2025",
+                content: `
+                    <div class="space-y-6">
+                        <div><span class="font-medium text-orange-400">1. Welcome</span><br>Morel mushroom velouté, chive oil, crispy shallots</div>
+                        <div><span class="font-medium text-orange-400">2. Salad</span><br>Baby lettuces, pickled ramps, goat cheese, hazelnut vinaigrette</div>
+                        <div><span class="font-medium text-orange-400">3. Fish</span><br>Seared rainbow trout, fiddlehead ferns, lemon beurre blanc</div>
+                        <div><span class="font-medium text-orange-400">4. Pasta</span><br>Wild nettle tagliatelle, pine nuts, pecorino</div>
+                        <div><span class="font-medium text-orange-400">5. Meat</span><br>Herb-crusted lamb loin, spring pea puree, mint jus</div>
+                        <div><span class="font-medium text-orange-400">6. Dessert</span><br>Rhubarb & strawberry pavlova, elderflower cream</div>
+                    </div>
+                `
+            }
+        ];
+        
+        function showMenuModal(index) {
+            const modal = document.getElementById('menu-modal');
+            const titleEl = document.getElementById('modal-title');
+            const subtitleEl = document.getElementById('modal-subtitle');
+            const contentEl = document.getElementById('modal-content');
+            
+            const menu = menus[index];
+            titleEl.textContent = menu.title;
+            subtitleEl.textContent = menu.subtitle;
+            contentEl.innerHTML = menu.content;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+        
+        function hideMenuModal() {
+            const modal = document.getElementById('menu-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+        
+        // Contact form handler
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = `<span>Sending...</span> <i class="fa-solid fa-spinner fa-spin"></i>`;
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = `Message Sent! <i class="fa-solid fa-check"></i>`;
+                btn.classList.add('!bg-emerald-600', '!text-white');
+                
+                setTimeout(() => {
+                    alert("Thank you! Your inquiry has been received. Sophia will respond within 48 hours. (This is a demo — in production connect to Formspree or an email service)");
+                    e.target.reset();
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    btn.classList.remove('!bg-emerald-600', '!text-white');
+                }, 1800);
+            }, 1350);
+        }
+        
+        // Keyboard escape for modal
+        function setupKeyboard() {
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('menu-modal');
+                    if (!modal.classList.contains('hidden')) {
+                        hideMenuModal();
+                    }
+                }
+            });
+        }
+        
+        // Initialize everything
+        function init() {
+            initializeTailwind();
+            setupMobileMenu();
+            setupKeyboard();
+            
+            // Smooth scroll for all anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+            
+            // Easter egg: logo click shows fun message
+            const logo = document.querySelector('.fa-utensils');
+            if (logo) {
+                logo.addEventListener('click', () => {
+                    const original = logo.className;
+                    logo.className = 'fa-solid fa-heart text-red-500 text-4xl';
+                    setTimeout(() => { logo.className = original; }, 1200);
+                });
+            }
+            
+            console.log('%c[Chef Portfolio] Website initialized successfully. Ready for customization!', 'color:#64748b');
+        }
+        
+        window.onload = init;
+    </script>
+</body>
+</html>
