@@ -31,13 +31,9 @@
             transform: translateY(-12px) scale(1.01);
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
         }
-        .placeholder-img {
-            background: linear-gradient(145deg, #3f2a1f, #2c2118);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+        .hero-img {
+            image-rendering: crisp-edges;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -79,66 +75,59 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - Fully Responsive -->
     <header class="pt-20 min-h-[100dvh] flex items-center bg-[#2c2118] relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div class="max-w-xl">
-                <div class="inline-flex items-center gap-x-2 bg-[#3f2a1f] px-4 py-1.5 rounded-3xl mb-6 border border-[#5c4636]">
-                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                    <span class="text-emerald-400 text-sm font-medium tracking-widest">OPEN TO OPPORTUNITIES • AUSTIN, TX</span>
-                </div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
                 
-                <h1 class="text-7xl md:text-8xl font-bold heading-serif leading-[0.92] tracking-tighter mb-6 text-[#f5f0e6]">
-                    ANGELINA<br>HARBOUR
-                </h1>
-                
-                <p class="text-2xl text-[#d4c9b0] mb-8 max-w-md">
-                    Dedicated line cook & creative culinarian ready to bring consistency, speed, and passion to your kitchen
-                </p>
-                
-                <div class="flex flex-wrap gap-4">
-                    <a href="#dishes" 
-                       class="group inline-flex items-center justify-center gap-x-3 bg-gradient-to-r from-[#9f4f2e] to-[#b45f3a] hover:from-[#8a4427] hover:to-[#a34f32] transition-all text-white font-semibold px-8 h-14 rounded-3xl text-lg shadow-xl">
-                        <span>View My Work</span>
-                        <i class="fa-solid fa-arrow-right group-active:scale-90 transition-transform"></i>
-                    </a>
+                <!-- Text Content -->
+                <div class="max-w-xl order-2 md:order-1">
+                    <div class="inline-flex items-center gap-x-2 bg-[#3f2a1f] px-4 py-1.5 rounded-3xl mb-6 border border-[#5c4636]">
+                        <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                        <span class="text-emerald-400 text-sm font-medium tracking-widest">OPEN TO OPPORTUNITIES • AUSTIN, TX</span>
+                    </div>
                     
-                    <a href="#contact" 
-                       class="inline-flex items-center justify-center gap-x-3 border border-[#5c4636] hover:bg-[#3f2a1f] transition-all font-semibold px-8 h-14 rounded-3xl text-lg">
-                        Contact Me
-                    </a>
+                    <h1 class="text-6xl md:text-8xl font-bold heading-serif leading-[0.92] tracking-tighter mb-6 text-[#f5f0e6]">
+                        ANGELINA<br>HARBOUR
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl text-[#d4c9b0] mb-8 max-w-md">
+                        Dedicated line cook & creative culinarian ready to bring consistency, speed, and passion to your kitchen
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#dishes" 
+                           class="group inline-flex items-center justify-center gap-x-3 bg-gradient-to-r from-[#9f4f2e] to-[#b45f3a] hover:from-[#8a4427] hover:to-[#a34f32] transition-all text-white font-semibold px-8 h-14 rounded-3xl text-lg shadow-xl">
+                            <span>View My Work</span>
+                            <i class="fa-solid fa-arrow-right group-active:scale-90 transition-transform"></i>
+                        </a>
+                        
+                        <a href="#contact" 
+                           class="inline-flex items-center justify-center gap-x-3 border border-[#5c4636] hover:bg-[#3f2a1f] transition-all font-semibold px-8 h-14 rounded-3xl text-lg">
+                            Contact Me
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="mt-10 flex items-center gap-x-8 text-sm">
-                    <div class="flex -space-x-3">
-                        <div class="w-8 h-8 bg-[#5c4636] rounded-full border-2 border-[#2c2118]"></div>
-                        <div class="w-8 h-8 bg-[#5c4636] rounded-full border-2 border-[#2c2118]"></div>
-                        <div class="w-8 h-8 bg-[#5c4636] rounded-full border-2 border-[#2c2118]"></div>
+                <!-- Hero Portrait - Visible on ALL screens -->
+                <div class="order-1 md:order-2 relative">
+                    <div class="w-full max-w-[420px] mx-auto aspect-[4/3] rounded-[3rem] overflow-hidden border border-[#5c4636] shadow-2xl">
+                        <img src="https://raw.githubusercontent.com/ashtonamirrezvani-oss/chef-portfolio/main/lina%20head%20shot" 
+                             alt="Professional Chef Portrait of Angelina Harbour" 
+                             class="w-full h-full object-cover hero-img">
                     </div>
-                    <div class="text-[#b8a78a] text-xs">Escoffier 2025 Graduate • Dean's List</div>
-                </div>
-            </div>
-            
-            <!-- HERO IMAGE - FIXED WITH STABLE /main/ URL -->
-            <div class="relative hidden md:block">
-                <div class="w-full aspect-[4/3] rounded-[3.5rem] overflow-hidden border border-[#5c4636] shadow-2xl">
-                    <img src="https://raw.githubusercontent.com/ashtonamirrezvani-oss/chef-portfolio/main/lina%20head%20shot" 
-                         alt="Professional Chef Portrait of Angelina Harbour" 
-                         class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#2c2118]/70 via-transparent to-transparent"></div>
-                </div>
-                <div class="absolute -bottom-6 -left-6 bg-[#3f2a1f] border border-[#5c4636] rounded-3xl px-6 py-4 shadow-xl">
-                    <div class="flex items-center gap-x-4">
-                        <div>
-                            <div class="text-xs text-[#b8a78a]">CURRENTLY BASED IN</div>
-                            <div class="font-semibold">Austin, Texas</div>
-                        </div>
-                        <div class="w-px h-9 bg-[#5c4636]"></div>
-                        <div class="text-emerald-400">
-                            <i class="fa-solid fa-map-marker-alt text-xl"></i>
+                    
+                    <div class="absolute -bottom-4 -right-4 bg-[#3f2a1f] border border-[#5c4636] rounded-3xl px-5 py-3 shadow-xl hidden md:block">
+                        <div class="flex items-center gap-x-3">
+                            <div>
+                                <div class="text-xs text-[#b8a78a]">BASED IN</div>
+                                <div class="font-semibold text-sm">Austin, Texas</div>
+                            </div>
+                            <i class="fa-solid fa-map-marker-alt text-emerald-400 text-xl"></i>
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </header>
@@ -605,7 +594,7 @@
                 });
             });
             
-            console.log('%c[Chef Portfolio] Hero image fixed with stable /main/ URL!', 'color:#b8a78a');
+            console.log('%c[Chef Portfolio] Hero now fully responsive + sharper image on all devices!', 'color:#b8a78a');
         }
         
         window.onload = init;
